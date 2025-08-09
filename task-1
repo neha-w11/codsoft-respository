@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Neha Wadhwani</h1>
+        <p>Web Developer</p>
+        <p>Designer</p>
+        <p>Student</p>
+    </header>
+    <section id="about">
+      <h2>About Me</h2>
+      <p><b>"Hello,Iam Neha,a passionate web developer.I enjoy to build responsive websites by using HTML,CSS, JAVASCRIPT,PHP.I'm passionate about delivering high-quality work and collabaorating with teams to create digital experiences.
+          Working on the web is my passion as i love to work on exciting projects particularly in web development".</p></b>
+    <section id="skills">
+        <h2>My Skills</h2>
+        <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>PHP</li>
+        </ul>
+    </section>
+  <!--<section id="projects">
+        <h2>My Projects</h2>
+        <div class="project">
+
+        </div>-->
+        <section id="projects">
+          <h2>My projects</h2>
+          <div class="project">
+          <h3>Project 1:Portfolio website</h3>
+          <img src="D:\portfolio website" alt="portfolio">
+          <p>A simple responsive portfolio website using HTML,CSS</p>
+          </div>
+        </section>
+
+        <section id="resume">
+            <h2>Resume</h2>
+            <div class="social-links">
+                <a href="#"><i class="fa-brands fa-github</i></a>
+            </div>
+            <a href="resume.pdf" download>Download My Resume</a>
+        </section>
+
+        <section id="Contact">
+            <h2>Contact Me</h2>
+            <p>Email: wadhwanineha11@gmail.com</p>
+            <p>Phone no: 9373402979</p>
+        </section>
+
+        <footer>
+            <p>&copy;2025 Neha Wadhwani. All rights reserved</p>
+        </footer>    
+</body>
+</html>
+
+
+body{
+   font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: 100;
+    background-color:antiquewhite;
+    margin: 0; 
+
+}
+
+
+
+h1{
+    margin: 0;
+}
+
+header{
+    background-color:bisque;
+    padding: 20;
+    text-align:center;
+    
+}
+
+section{
+    margin: 0;
+    width: 0;
+}
+
+/*img{
+    max-width: none;
+    border-radius: 50px;
+    display: block;
+    margin: 10px auto;
+    border: #222;
+    padding: 50px 10px;
+}*/
+
+ul{
+    list-style: disc;
+    padding: 0;
+}
+
+li{
+    padding: none;
+    color:black;
+    margin: 15;
+    padding: 10;
+    border-radius: 5px;
+
+}
+
+.project{
+    background-color:bisque;
+    position: sticky;
+    margin-bottom:0%;
+    border-radius: 5px;
+    box-shadow: 02px 5px rgba(0,0,0,0.1);
+}
+
+resume a{
+    padding: 15px 15px;
+    background-color:blanchedalmond;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+contact{
+    margin: 5px 0;
+
+}
+
+footer{
+    background-color: #222;
+    color:bisque;
+    padding: 15px;
+    text-align: center;
+}
+
+#landing page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Books Workshop</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css">
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+    <h1><b>Book Workshop</h1></b>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Books</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">About Us</a></li>
+        </ul>
+    </nav>
+    </div>
+</header>
+
+<nav class="bottom-navbar">
+    <a href="#home" class="fas fa-home" aria-label="Home"></a>
+    <a href="#featured" class="fas fa-list" aria-label="Featured"></a>
+    <a href="#arrivals" class="fas fa-tags" aria-label="Arrivals"></a>
+    <a href="#reviews" class="fas fa-comments" aria-label="Reviews"></a>
+    <a href="#blogs" class="fas fa-blog"></a>
+</nav>
+
+<div class="icons-container">
+
+    <div class="signup-icon">&#x2716;</div>
+    <div class="cart-icon">&#x1F6D2;</div>
+    
+</div>
+
+
+<section class="hero">
+    <div class="container">
+    <h3>Discover. Read. Repeat</h3>
+    <p>Thousands of books one place. From fiction into textbooks - we've got it all!</p>
+    <a href="#" class="btn">Browse Books</a>
+    </div>
+    <div class="book-gallery">
+  <div class="books-container">
+    <img src="book.jpg" alt="The design of books">
+    <h3>The design of books</h3>
+    <p>Debbie Berne</p>
+    <div class="stars">
+</div>
+  </div>
+  <div class="books-container">
+    <img src="book1.jpg" alt="House of names">
+    <h3>House of names</h3>
+    <p>Colm Tolbin</p>
+  </div>
+  <div class="books-container">
+    <img src="book2.jpg" alt="House of names">
+    <h3>House of names</h3>
+    <p>by Colm Tolbin</p>
+  </div>
+  <div class="books-container">
+    <img src="book3.jpeg" alt="The lord of the rings" height="250">
+    <h3>The lord of the rings</h3>
+    <p>by J.R.R. Tolkien</p>
+  </div>
+  <!-- Add more books as needed -->
+</div>
+</section>
+<section id="about">
+    <h2>About Us</h2>
+    <p><b>
+        Welcome to BookStore your trusted online bookstore! Whether you're a lifelong experience or a casual reader,
+        we bring the joy of reading right to your fingertips. Our carefully curated selection spans fiction, non-fiction, academic
+        texts, bestsellers, and hidden gems from around the world. </p></b>
+    <p>
+        At BookNest, we believe in the power of stories to inspire, educate, and transform. Our mission is to make books accessible
+        to everyone, everywhere with fast delivery, affordable prices, and a seamless online experience.
+    </p>
+    <p>
+        Join our community of readers today and discover your next great read!
+    </p>
+</section>
+
+<section class="books">
+    <div class="book">
+        <img src="home.jpg" alter="books">
+    </div>
+</section>
+
+<section class="features">
+    <div class="feature">
+     <i class="fas fa-truck"></i>
+    <p>On all orders over ₹499</p>
+    </div>
+    <div class="feature">
+        <i class="fas fa-credit-card"></i>
+        <p>Multiple payment options available</p>
+    </div>
+    <div class="feature">
+       <i class="fas fa-star"></i>
+        <p>Handpicked titles for every reader</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-clock"></i>
+        <p>On Time delivery services should be given</p>
+    </div>
+</section>
+
+<div>
+    <a href="login.html"><button>Login</button></a>
+    <a href="registration.html"><button>Register</button></a>
+</div>
+    
+<footer>
+    <p>&copy; 2025 BookNest | Made with for readers</p>
+</footer>
+</body>
+</html>
+
+#login.html
+<html>
+    <head>
+        <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Welcome to the Books Workshop</title>
+      <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="login" class="login-form">
+    <div class="form-container">
+        <h2>Login</h2>
+        <form>
+            <input type="text" placeholder="Username" >
+            <input type="email" placeholder="Email Id">
+            <input type="password" placeholder="password">
+            <button type="submit" onclick="showMessage('Login is successful')">Login </button>
+            <p class="form-link">New User? <a href="#register">Register here</a></p>
+        </form>
+        <p class="message" id="Login is successful">✅</p>
+    </div>
+</section>
+<div>
+    <a herf="Registration.html"></a>
+</div>
+</body>
+</html>
+#registration.html
+<html>
+    <head>
+        <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Welcome to the Books Workshop</title>
+      <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="Register" class="registration-form">
+    <div class="form-container">
+        <h2>Register</h2>
+        <form>
+            <input type="text" placeholder="Full Name">
+            <input type="text" placeholder="Username">
+            <input type="email" placeholder="Email Id">
+            <input type="password" placeholder="password">
+            <button type="submit" onclick="showMessage('Registration is successful')">Register</button>
+            <p class="form-link">Already have an account? <a href=#login>Login here</a></p>
+        </form>
+        <p class="message" id="Register is successful">✅</p>
+    </div>
+</section> 
+<div>
+    <a herf="login.html"><link>Login here</link></a>
+</div>
+</body>
+</html>
+#style.css
+* {
+  font-family: 'Open Sans', sans-serif ;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color:#f9f9f9;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    background-color:burlywood;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    justify-content: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+     background: url('banner.jpg') no-repeat center center;
+    background-color: skyblue;
+    color: black;
+    padding: 40px 20px;
+    text-align: center;
+    width: 35%;
+}
+
+.stars {
+  font-size: 20px;
+  color: #ffcc00; /* gold */
+  margin-top: 10px;
+}
+
+
+.book-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.books-container {
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.books-container:hover {
+  transform: scale(1.05);
+}
+
+.books-container img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.books-container h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+.books-container p {
+  color: #555;
+}
+
+
+
+.books img{
+    width: 400px;
+   height: auto; 
+    margin: 10px;
+    flex-shrink: 0;
+    border-radius: 5px;
+}
+
+.feature i {
+    font-size: 40px;
+    color: #219150;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.login-form{
+    width: 200px;
+    background-color: #f9f9f9;
+}
+
+.form{
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 40px 0;
+    max-width: 1000px;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.form-container{
+    background: white;
+    width: 45%;
+    min-width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #bbb;
+    margin-bottom: 20px;
+}
+
+h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button{
+    background-color: #219150;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 0;
+    border-Radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button:hover {
+    background:#219150;
+}
+
+a {
+    color:#219150;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.message{
+    margin-top: 10px;
+    color: green;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+a {
+    margin: 35px;
+    border-right: #219150;
+    box-sizing: 10px;
+    border: black;
+}
+
+
+
+footer{
+    background: black;
+    color: white;
+    padding: 15px;
+    width: 300px;
+    text-align: center;
+}
+#calculator
+#index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" class="display" readonly>
+        <div class="buttons">
+            <button onclick="clearDisplay()">AC</button>
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('/')">/</button>
+
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendValue('*')">*</button>
+
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="appendValue('-')">-</button>
+
+            <button onclick="appendValue('0')">0</button>
+            <button onclick="appendValue('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="appendValue('+')">+</button>
+
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>
+#style.css
+body {
+    font-family: 'Segoe UI', 'sans serif';
+    background: linear-gradient(to right, #dae2f8, #d6a4a4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculator {
+    padding: 40px;
+    background: black;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+}
+
+#display {
+    padding: 15px;
+    width: 100%;
+    font-size: 32px;
+    text-align: right;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    font-style: normal;
+    color: black;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.button {
+    padding: 35px;
+    border: none;
+    font-size: calc(1.8vw + 10px);
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: gray;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: #a5c5f6;
+    transform: scale(1.05);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.number, .decimal {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.operator {
+    background: rgba(255, 165, 0, 0.8);
+}
+
+.equals {
+    background: rgba(40, 167, 69, 0.8);
+}
+
+.clear, .delete {
+    background: rgba(220, 53, 69, 0.8);
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+.error {
+    background: rgba(220, 53, 69, 0.9) !important;
+    animation: shake 0.5s;
+}
+#script.js
+let display = document.getElementById('display');
+let currentInput = '0';
+
+function updateDisplay() {
+    display.textContent = currentInput;
+}
+
+function clearDisplay() {
+    currentInput = '0';
+    updateDisplay();
+}
+
+function appendToDisplay(value) {
+    if (currentInput === '0') {
+        currentInput = value;
+    } else {
+        currentInput += value;
+    }
+    updateDisplay();
+}
+
+function backspace() {
+    currentInput = currentInput.length > 1 ? currentInput.slice(0, -1) : '0';
+    updateDisplay();
+}
+
+function calculate() {
+    try {
+        // Validate the input before evaluating
+        validateOperatorSequence(currentInput);
+        checkOperatorsCharByChar(currentInput);
+        
+        // Evaluate the expression
+        currentInput = eval(currentInput).toString();
+        updateDisplay();
+    } catch (e) {
+        currentInput = 'Error';
+        updateDisplay();
+        setTimeout(clearDisplay, 1000);
+    }
+}
+
+// Validate operator sequence function
+function validateOperatorSequence(expression) {
+    const patterns = {
+        consecutiveOperators: /[+\-*/]{2,}/,           // ++, --, **, etc.
+        operatorAtStart: /^[+*/]/,                     // Starting with +, *, /
+        operatorAtEnd: /[+\-*/]$/,                     // Ending with operator
+        spacesBetweenOps: /[+\-*/]\s+[+\-*/]/,         // + - (with spaces)
+        invalidCombos: /(\+\-|\-\+|\*\+|\+\*|\/\+|\+\/|\*\-|\-\*|\/\-|\-\/|\*\/|\/\*)/
+    };
+
+    for (let [errorType, pattern] of Object.entries(patterns)) {
+        if (pattern.test(expression)) {
+            throw new Error(`Invalid operator sequence: ${errorType}`);
+        }
+    }
+    return true;
+}
+
+// Check operators character by character function
+function checkOperatorsCharByChar(expression) {
+    const operators = ['+', '-', '*', '/'];
+    let lastWasOperator = false;
+
+    for (let i = 0; i < expression.length; i++) {
+        const char = expression[i];
+        const isOperator = operators.includes(char);
+
+        if (isOperator) {
+            // Special case: allow negative numbers like "5*-3"
+            if (char === '-' && i > 0 && operators.includes(expression[i - 1])) {
+                lastWasOperator = false; // Treat as negative sign, not operator
+                continue;
+            }
+
+            if (lastWasOperator) {
+                throw new Error(`Multiple operators detected at position ${i}: '${expression[i - 1]}${char}'`);
+            }
+
+            // Check if operator is at the beginning (except minus for negative numbers)
+            if (i === 0 && char !== '-') {
+                throw new Error(`Expression cannot start with operator: '${char}'`);
+            }
+
+            // Check if operator is at the end
+            if (i === expression.length - 1) {
+                throw new Error(`Expression cannot end with operator: '${char}'`);
+            }
+
+            lastWasOperator = true;
+        } else if (char !== ' ') { // Ignore spaces
+            lastWasOperator = false;
+        }
+    }
+    return true;
+    }
+
+
+// Initialize display
+updateDisplay();
+  
