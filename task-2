@@ -1,0 +1,890 @@
+#index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMaster - Online Quiz Platform</title>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 QuizMaster</h1>
+            <p>Create, Share, and Take Amazing Quizzes</p>
+            <div class="nav-buttons">
+                <button class="btn" onclick="showHome()">🏠 Home</button>
+                <button class="btn" onclick="showQuizList()">📋 Browse Quizzes</button>
+                <button class="btn" onclick="showCreateQuiz()">➕ Create Quiz</button>
+                <button class="btn btn-secondary" onclick="showLogin()" id="loginBtn">👤 Login</button>
+                <div class="user-info hidden" id="userInfo">
+                    <span>👋 Welcome, <span id="username"></span></span>
+                    <button class="btn" onclick="logout()" style="padding: 5px 15px; font-size: 14px;">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Home Page -->
+        <div id="homePage" class="content-card">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea;">Welcome to QuizMaster!</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">📝</div>
+                    <h3 style="color: #667eea; margin-bottom: 15px;">Create Quizzes</h3>
+                    <p style="margin-bottom: 20px; color: #666;">Build engaging quizzes with multiple-choice questions. Perfect for education, training, or just for fun!</p>
+                    <button class="btn" onclick="showCreateQuiz()">Start Creating</button>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">🎯</div>
+                    <h3 style="color: #667eea; margin-bottom: 15px;">Take Quizzes</h3>
+                    <p style="margin-bottom: 20px; color: #666;">Test your knowledge with quizzes created by the community. Get instant feedback and track your progress!</p>
+                    <button class="btn btn-secondary" onclick="showQuizList()">Browse Quizzes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login/Register Page -->
+        <div id="loginPage" class="content-card hidden">
+            <div class="login-form">
+                <h2 style="text-align: center; margin-bottom: 30px; color: #667eea;">Join QuizMaster</h2>
+                <div id="loginAlert"></div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginUsername">Username:</label>
+                        <input type="text" id="loginUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password:</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; margin-bottom: 15px;">Login</button>
+                </form>
+                <div style="text-align: center;">
+                    <p style="margin-bottom: 15px;">Don't have an account?</p>
+                    <button class="btn btn-secondary" onclick="showRegister()" style="width: 100%;">Register</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Page -->
+        <div id="registerPage" class="content-card hidden">
+            <div class="login-form">
+                <h2 style="text-align: center; margin-bottom: 30px; color: #667eea;">Create Account</h2>
+                <div id="registerAlert"></div>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="regUsername">Username:</label>
+                        <input type="text" id="regUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email:</label>
+                        <input type="email" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Password:</label>
+                        <input type="password" id="regPassword" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; margin-bottom: 15px;">Register</button>
+                </form>
+                <div style="text-align: center;">
+                    <p style="margin-bottom: 15px;">Already have an account?</p>
+                    <button class="btn btn-secondary" onclick="showLogin()" style="width: 100%;">Login</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Creation Page -->
+        <div id="createQuizPage" class="content-card hidden">
+            <h2 style="margin-bottom: 30px; color: #667eea;">Create New Quiz</h2>
+            <form id="createQuizForm">
+                <div class="form-group">
+                    <label for="quizTitle">Quiz Title:</label>
+                    <input type="text" id="quizTitle" placeholder="Enter quiz title..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quizDescription">Description:</label>
+                    <textarea id="quizDescription" rows="3" placeholder="Describe your quiz..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="quizCategory">Category:</label>
+                    <select id="quizCategory">
+                        <option value="General">General Knowledge</option>
+                        <option value="Science">Science</option>
+                        <option value="History">History</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Technology">Technology</option>
+                    </select>
+                </div>
+
+                <div id="questionsContainer">
+                    <h3 style="margin: 30px 0 20px; color: #333;">Questions</h3>
+                </div>
+
+                <button type="button" class="btn btn-secondary" onclick="addQuestion()" style="margin-bottom: 20px;">➕ Add Question</button>
+                <button type="submit" class="btn" style="width: 100%;">🚀 Create Quiz</button>
+            </form>
+        </div>
+
+        <!-- Quiz List Page -->
+        <div id="quizListPage" class="content-card hidden">
+            <h2 style="margin-bottom: 30px; color: #667eea;">Available Quizzes</h2>
+            <div id="quizList"></div>
+        </div>
+
+        <!-- Quiz Taking Page -->
+        <div id="takeQuizPage" class="content-card hidden">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div id="quizContent"></div>
+        </div>
+
+        <!-- Quiz Results Page -->
+        <div id="resultsPage" class="content-card hidden">
+            <div id="resultsContent"></div>
+        </div>
+    </div>
+
+#style.css
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #48cae4, #0077b6);
+            box-shadow: 0 4px 15px rgba(72, 202, 228, 0.4);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(72, 202, 228, 0.6);
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .question-block {
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .option-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .option-input input[type="text"] {
+            flex: 1;
+        }
+
+        .quiz-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-card h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .quiz-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+
+        .quiz-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-question h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            background: rgba(102, 126, 234, 0.05);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-option:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(5px);
+        }
+
+        .quiz-option.selected {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .quiz-option.correct {
+            background: rgba(76, 175, 80, 0.2);
+            border-color: #4caf50;
+        }
+
+        .quiz-option.incorrect {
+            background: rgba(244, 67, 54, 0.2);
+            border-color: #f44336;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .score-card {
+            text-align: center;
+            background: linear-gradient(135deg, #4caf50, #8bc34a);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+        }
+
+        .score-card h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .score-card p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .user-info {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .content-card {
+                padding: 20px;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quiz-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+#script.js
+let currentUser = null;
+let users = [];
+let quizzes = [];
+let currentQuiz = null;
+let currentQuestionIndex = 0;
+let userAnswers = [];
+let quizStartTime = null;
+let quizResults = [];
+
+
+// API Base URL (adjust if needed)
+const API_BASE = '/api';
+
+// Initialize Application
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
+    setupEventListeners();
+});
+
+// Initialize application
+async function initializeApp() {
+    try {
+        // Load quizzes from server
+        await loadQuizzes();
+        
+        // Check for logged in user (from localStorage for session persistence)
+        const savedUser = localStorage.getItem('currentUser');
+        if (savedUser) {
+            currentUser = JSON.parse(savedUser);
+            updateAuthUI();
+        }
+        
+        showHome();
+    } catch (error) {
+        console.error('Failed to initialize app:', error);
+        showHome();
+    }
+}
+
+// API Functions
+async function loadQuizzes() {
+    try {
+        const response = await fetch(`${API_BASE}/quizzes`);
+        if (response.ok) {
+            quizzes = await response.json();
+        } else {
+            console.error('Failed to load quizzes');
+            quizzes = [];
+        }
+    } catch (error) {
+        console.error('Error loading quizzes:', error);
+        quizzes = [];
+    }
+}
+
+async function saveQuizToServer(quizData) {
+    try {
+        const response = await fetch(`${API_BASE}/quizzes`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(quizData)
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to save quiz');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error saving quiz:', error);
+        throw error;
+    }
+}
+
+async function submitQuizResults(quizId, answers, score) {
+    try {
+        const response = await fetch(`${API_BASE}/quizzes/${quizId}/submit`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ answers, score })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to submit quiz results');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error submitting quiz:', error);
+        throw error;
+    }
+}
+
+async function registerUser(username, email, password) {
+    try {
+        const response = await fetch(`${API_BASE}/users/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, email, password })
+        });
+
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.error || 'Registration failed');
+        }
+
+        return data;
+    } catch (error) {
+        console.error('Registration error:', error);
+        throw error;
+    }
+}
+
+async function loginUser(username, password) {
+    try {
+        const response = await fetch(`${API_BASE}/users/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password })
+        });
+
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.error || 'Login failed');
+        }
+
+        return data;
+    } catch (error) {
+        console.error('Login error:', error);
+        throw error;
+    }
+}
+
+// Event Listeners Setup
+function setupEventListeners() {
+    // Login form
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const username = document.getElementById('loginUsername').value;
+        const password = document.getElementById('loginPassword').value;
+        await login(username, password);
+    });
+    
+    // Register form
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const username = document.getElementById('regUsername').value;
+        const email = document.getElementById('regEmail').value;
+        const password = document.getElementById('regPassword').value;
+        await register(username, email, password);
+    });
+    
+    // Quiz creation form
+    document.getElementById('createQuizForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        await createQuiz();
+    });
+}
+
+// Page Navigation Functions
+function showPage(pageId) {
+    const pages = ['homePage', 'loginPage', 'registerPage', 'createQuizPage', 'quizListPage', 'takeQuizPage', 'resultsPage'];
+    pages.forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+    });
+    document.getElementById(pageId).classList.remove('hidden');
+}
+
+function showHome() {
+    showPage('homePage');
+}
+
+function showLogin() {
+    if (currentUser) {
+        logout();
+        return;
+    }
+    showPage('loginPage');
+    clearForm('loginForm');
+    document.getElementById('loginAlert').innerHTML = '';
+}
+
+function showRegister() {
+    showPage('registerPage');
+    clearForm('registerForm');
+    document.getElementById('registerAlert').innerHTML = '';
+}
+
+function showCreateQuiz() {
+    if (!currentUser) {
+        showAlert('loginAlert', 'Please login to create quizzes.', 'error');
+        showLogin();
+        return;
+    }
+    showPage('createQuizPage');
+    resetQuizForm();
+}
+
+async function showQuizList() {
+    showPage('quizListPage');
+    await loadQuizzes(); // Refresh quizzes from server
+    displayQuizzes();
+}
+
+// Authentication Functions
+async function login(username, password) {
+    if (!username || !password) {
+        showAlert('loginAlert', 'Please fill in all fields.', 'error');
+        return false;
+    }
+    
+    try {
+        const response = await loginUser(username, password);
+        if (response.success) {
+            currentUser = response.user;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            updateAuthUI();
+            showAlert('loginAlert', 'Login successful!', 'success');
+            setTimeout(() => showHome(), 1500);
+            return true;
+        }
+    } catch (error) {
+        showAlert('loginAlert', error.message, 'error');
+    }
+    return false;
+}
+
+async function register(username, email, password) {
+    if (!username || !email || !password) {
+        showAlert('registerAlert', 'Please fill in all fields.', 'error');
+        return false;
+    }
+    
+    if (username.length < 3) {
+        showAlert('registerAlert', 'Username must be at least 3 characters long.', 'error');
+        return false;
+    }
+    
+    if (password.length < 6) {
+        showAlert('registerAlert', 'Password must be at least 6 characters long.', 'error');
+        return false;
+    }
+    
+    try {
+        const response = await registerUser(username, email, password);
+        if (response.success) {
+            showAlert('registerAlert', 'Registration successful! You can now login.', 'success');
+            setTimeout(() => showLogin(), 1500);
+            return true;
+        }
+    } catch (error) {
+        showAlert('registerAlert', error.message, 'error');
+    }
+    return false;
+}
+
+function logout() {
+    currentUser = null;
+    localStorage.removeItem('currentUser');
+    updateAuthUI();
+    showHome();
+}
+
+function updateAuthUI() {
+    const loginBtn = document.getElementById('loginBtn');
+    const userInfo = document.getElementById('userInfo');
+    const username = document.getElementById('username');
+    
+    if (currentUser) {
+        loginBtn.classList.add('hidden');
+        userInfo.classList.remove('hidden');
+        username.textContent = currentUser.username;
+    } else {
+        loginBtn.classList.remove('hidden');
+        userInfo.classList.add('hidden');
+    }
+}
+
+// Utility Functions
+function showAlert(containerId, message, type = 'error') {
+    const container = document.getElementById(containerId);
+    const alertClass = type === 'success' ? 'alert success' : 'alert';
+    container.innerHTML = `<div class="${alertClass}">${message}</div>`;
+    setTimeout(() => {
+        container.innerHTML = '';
+    }, 5000);
+}
+
+function clearForm(formId) {
+    document.getElementById(formId).reset();
+}
+
+function generateId() {
+    return Date.now() + Math.random().toString(36).substr(2, 9);
+}
+
+// Quiz Creation Functions
+function resetQuizForm() {
+    document.getElementById('createQuizForm').reset();
+    document.getElementById('questionsContainer').innerHTML = '<h3 style="margin: 30px 0 20px; color: #333;">Questions</h3>';
+    questionCount = 0;
+    addQuestion();
+}
+
+function addQuestion() {
+    questionCount++;
+    const container = document.getElementById('questionsContainer');
+    const questionHtml = `
+        <div class="question-block" data-question="${questionCount}">
+            <div class="form-group">
+                <label>Question ${questionCount}:</label>
+                <input type="text" class="question-text" placeholder="Enter your question..." required>
+            </div>
+            <div class="options-grid">
+                <div class="option-input">
+                    <input type="radio" name="correct${questionCount}" value="0" required>
+                    <input type="text" class="option-text" placeholder="Option A" required>
+                </div>
+                <div class="option-input">
+                    <input type="radio" name="correct${questionCount}" value="1" required>
+                    <input type="text" class="option-text" placeholder="Option B" required>
+                </div>
+                <div class="option-input">
+                    <input type="radio" name="correct${questionCount}" value="2" required>
+                    <input type="text" class="option-text" placeholder="Option C" required>
+                </div>
+                <div class="option-input">
+                    <input type="radio" name="correct${questionCount}" value="3" required>
+                    <input type="text" class="option-text" placeholder="Option D" required>
+                </div>
+            </div>
+            ${questionCount > 1 ? `<button type="button" class="btn" onclick="removeQuestion(${questionCount})" style="background: #f44336; margin-top: 10px;">Remove Question</button>` : ''}
+        </div>
+    `;
+    container.insertAdjacentHTML('beforeend', questionHtml);
+}
+
+function removeQuestion(questionNum) {
+    const questionBlock = document.querySelector(`[data-question="${questionNum}"]`);
+    if (questionBlock) {
+        questionBlock.remove();
+    }
+}
+
+async function createQuiz() {
+    const title = document.getElementById('quizTitle').value;
+    const description = document.getElementById('quizDescription').value;
+    const category = document.getElementById('quizCategory').value;
+    
+    const questionBlocks = document.querySelectorAll('.question-block');
+    const questions = [];
+    
+    questionBlocks.forEach(block => {
+        const questionText = block.querySelector('.question-text').value;
+        const options = Array.from(block.querySelectorAll('.option-text')).map(input => input.value);
+        const correctRadio = block.querySelector('input[type="radio"]:checked');
+        
+        if (correctRadio && questionText && options.every(opt => opt.trim())) {
+            const correctIndex = parseInt(correctRadio.value);
+            questions.push({
+                question: questionText,
+                options: options,
+                correct: correctIndex
+            });
+        }
+    });
+    
+    if (questions.length === 0) {
+        alert('Please add at least one complete question.');
+        return;
+    }
+    
+    const newQuiz = {
+        title,
+        description,
+        category,
+        creator: currentUser.username,
+        questions
+    };
+    
+    try {
+        const response = await saveQuizToServer(newQuiz);
+        if (response.success) {
+            alert('Quiz created successfully!');
+            await loadQuizzes(); // Refresh quiz list
+            showQuizList();
+        }
+    } catch (error) {
+        alert('Failed to create quiz. Please try again.');
+        console.error('Quiz creation error:', error);
+    }
+}
+
+
+
+
